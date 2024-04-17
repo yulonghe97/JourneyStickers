@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import APIPanel from "./APIPanel";
@@ -8,9 +9,25 @@ import { Tooltip, TooltipTrigger } from "./ui/tooltip";
 import { Textarea } from "./ui/textarea";
 import ConfigPanel from "./ConfigPanel";
 import { Button } from "./ui/button";
+import { motion } from "framer-motion";
 
 export default function ControlPanel() {
   return (
+    <motion.div
+    initial={{
+      opacity: 0,
+      y: 20,
+    }}
+    animate={{
+      opacity: 1,
+      y: [20, -5, 0],
+    }}
+    transition={{
+      duration: 0.5,
+      ease: [0.4, 0.0, 0.2, 1],
+    }}
+    className="flex w-full justify-center items-center"
+  >
     <Card className="mt-10 w-full">
       <CardHeader>
         <CardTitle>
@@ -40,5 +57,6 @@ export default function ControlPanel() {
         </div>
       </CardContent>
     </Card>
+    </motion.div>
   );
 }
