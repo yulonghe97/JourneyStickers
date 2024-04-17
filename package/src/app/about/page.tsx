@@ -1,7 +1,9 @@
+import Animated from "@/components/Animated";
+
 /* eslint-disable react/no-unescaped-entities */
 export default function AboutPage() {
   return (
-    <div className="flex flex-col mt-10 gap-4 justify-center w-[800px]">
+    <Animated className="flex flex-col mt-10 gap-4 justify-center w-[800px]">
       <h3 className="font-medium text-3xl">About</h3>
       <p>
         Imagine transforming your most cherished travel memories into a unique piece of art that accompanies you
@@ -19,6 +21,6 @@ export default function AboutPage() {
         custom laptop stickers. Visit our website today, share your travel highlights, and take the first step in
         turning your adventures into a work of art that sticks with you. Order now and carry your world with you!
       </p>
-    </div>
+    </Animated>
   );
 }

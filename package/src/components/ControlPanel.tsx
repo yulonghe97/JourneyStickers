@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import APIPanel from "./APIPanel";
@@ -10,53 +10,42 @@ import { Textarea } from "./ui/textarea";
 import ConfigPanel from "./ConfigPanel";
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";
+import Animated from "./Animated";
 
 export default function ControlPanel() {
   return (
-    <motion.div
-    initial={{
-      opacity: 0,
-      y: 20,
-    }}
-    animate={{
-      opacity: 1,
-      y: [20, -5, 0],
-    }}
-    transition={{
-      duration: 0.5,
-      ease: [0.4, 0.0, 0.2, 1],
-    }}
-    className="flex w-full justify-center items-center"
-  >
-    <Card className="mt-10 w-full">
-      <CardHeader>
-        <CardTitle>
-          <div className="flex w-full justify-between">
-            <span>Playground</span>
-            <Button size="sm" disabled>
-              Generate
-            </Button>
-          </div>
-        </CardTitle>
-        {/* <CardDescription>Card Description</CardDescription> */}
-      </CardHeader>
-      <CardContent>
-        <div className="flex w-full h-full gap-8 justify-between">
-          <div className="relative flex min-h-max w-full flex-col rounded-xl bg-muted/50">
-            <Badge variant="outline" className="absolute left-3 top-3">
-              Output
-            </Badge>
-            <div className="flex-1" />
-          </div>
-          <div className="w-8/12">
-            <div className="relative hidden flex-col items-start gap-8 md:flex">
-              <ConfigPanel />
-              <APIPanel />
+    <Animated>
+      <div className="flex w-full justify-center items-center">
+        <Card className="mt-10 w-full">
+          <CardHeader>
+            <CardTitle>
+              <div className="flex w-full justify-between">
+                <span>Playground</span>
+                <Button size="sm" disabled>
+                  Generate
+                </Button>
+              </div>
+            </CardTitle>
+            {/* <CardDescription>Card Description</CardDescription> */}
+          </CardHeader>
+          <CardContent>
+            <div className="flex w-full h-full gap-8 justify-between">
+              <div className="relative flex min-h-max w-full flex-col rounded-xl bg-muted/50">
+                <Badge variant="outline" className="absolute left-3 top-3">
+                  Output
+                </Badge>
+                <div className="flex-1" />
+              </div>
+              <div className="w-8/12">
+                <div className="relative hidden flex-col items-start gap-8 md:flex">
+                  <ConfigPanel />
+                  <APIPanel />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-    </motion.div>
+          </CardContent>
+        </Card>
+      </div>
+    </Animated>
   );
 }
