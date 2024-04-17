@@ -12,6 +12,9 @@ import { Button } from "./ui/button";
 import { motion } from "framer-motion";
 import Animated from "./Animated";
 
+import Lottie from "lottie-react";
+import travelAnimation from "./travel-animation.json";
+
 export default function ControlPanel() {
   return (
     <Animated>
@@ -35,6 +38,7 @@ export default function ControlPanel() {
                   Output
                 </Badge>
                 <div className="flex-1" />
+                <Lottie animationData={travelAnimation} loop={true}/>
               </div>
               <div className="w-8/12">
                 <div className="relative hidden flex-col items-start gap-8 md:flex">
