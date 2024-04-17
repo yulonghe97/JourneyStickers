@@ -1,12 +1,11 @@
 "use client";
 import React from "react";
-import { HeroHighlight, Highlight } from "./ui/hero-highlight";
-import { motion } from "framer-motion";
+import { Highlight } from "./ui/hero-highlight";
 import Animated from "./Animated";
 
 export default function Header() {
   return (
-    <div className="flex flex-col w-full items-center">
+    <div className="flex-col w-full items-center hidden md:flex">
       <Animated className="text-5xl font-bold">
         Journey
         <Highlight className="text-black dark:text-white ml-2">Stickers</Highlight>

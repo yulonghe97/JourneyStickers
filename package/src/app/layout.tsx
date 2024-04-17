@@ -4,8 +4,6 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { motion } from "framer-motion";
-import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import Header from "@/components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,12 +18,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <main className="flex min-h-screen flex-col items-center justify-between px-24 py-16">
-            <div className="absolute top-5 right-24">
+            <div className="absolute top-5 right-5">
               <ThemeToggle />
             </div>
             <div className="flex flex-col w-full h-full justify-center items-center">
