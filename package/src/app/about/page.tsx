@@ -3,7 +3,7 @@ import Animated from "@/components/Animated";
 /* eslint-disable react/no-unescaped-entities */
 export default function AboutPage() {
   return (
-    <Animated className="flex flex-col mt-10 gap-4 justify-center w-[800px]">
+    <Animated className="flex-col mt-10 gap-4 justify-center w-[800px] hidden md:flex">
       <h3 className="font-medium text-3xl">About</h3>
       <p>
         Imagine transforming your most cherished travel memories into a unique piece of art that accompanies you
