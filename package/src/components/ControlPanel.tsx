@@ -24,7 +24,7 @@ export default function ControlPanel() {
             <CardTitle>
               <div className="flex w-full justify-between">
                 <span>Playground</span>
-                <Button size="sm" disabled>
+                <Button size="sm" type="submit" form="sticker-form">
                   Generate
                 </Button>
               </div>

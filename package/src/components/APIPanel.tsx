@@ -30,7 +30,7 @@ export default function APIPanel() {
                   </div>
                 </div>
               </SelectItem>
-              <SelectItem value="gemini">
+              <SelectItem value="gemini" disabled>
                 <div className="flex items-start gap-3 text-muted-foreground">
                   <Bird className="size-5" />
                   <div className="grid gap-0.5">
@@ -46,10 +46,10 @@ export default function APIPanel() {
             </SelectContent>
           </Select>
         </div>
-        <div className="grid gap-3">
+        {/* <div className="grid gap-3">
           <Label htmlFor="api-key">API Key</Label>
           <Input id="api-key" type="password" placeholder="Paste your API Key" />
-        </div>
+        </div> */}
       </fieldset>
     </form>
   );
