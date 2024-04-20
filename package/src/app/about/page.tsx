@@ -21,6 +21,14 @@ export default function AboutPage() {
         custom laptop stickers. Visit our website today, share your travel highlights, and take the first step in
         turning your adventures into a work of art that sticks with you. Order now and carry your world with you!
       </p>
+      <h3 className="font-medium text-3xl">Team</h3>
+      <p>
+        <div className="flex gap-2">
+          <span>Yulong He,</span>
+          <span>Boyu Cao,</span>
+          <span>Simranjeet Dua</span>
+        </div>
+      </p>
     </Animated>
   );
 }

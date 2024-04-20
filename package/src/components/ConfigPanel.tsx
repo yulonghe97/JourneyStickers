@@ -6,39 +6,23 @@ import { Input } from "./ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { ImageConfiguration } from "@/interface/interfaces";
+import { useEffect } from "react";
 
-enum Shape {
-  Rectangular = "rectangular",
-  Circular = "circular",
+
+interface ConfigPanelProps {
+  onSubmit: SubmitHandler<ImageConfiguration>;
 }
 
-enum Size {
-  TwoByTwo = "2x2",
-  ThreeByThree = "3x3",
-  FourByFour = "4x4",
-}
+export default function ConfigPanel({ onSubmit } : ConfigPanelProps) {
 
-enum Style {
-  Minimalism = "minimalism",
-  Retro = "retro",
-  Cartoonism = "cartoonism",
-  Sketch = "sketch",
-  PopArt = "pop-art",
-  Graffiti = "graffiti",
-}
-
-interface ImageConfiguration {
-  placeVisited: string;
-  elements: string;
-  colors: string;
-  shape: Shape;
-  size: Size;
-  style: Style;
-}
-
-export default function ConfigPanel() {
-  const onSubmit: SubmitHandler<ImageConfiguration> = (data) => console.log(data);
   const form = useForm<ImageConfiguration>();
+  const { formState: { errors } } = form;
+
+  const validateCommaSeparated = (value: string) => {
+    if (!value) return "Required";
+    return value.split(",").every((v: string) => v.trim() !== "") || "Entries must be comma-separated";
+  };
 
   return (
     <Form {...form}>
@@ -48,6 +32,7 @@ export default function ConfigPanel() {
           <FormField
             control={form.control}
             name="placeVisited"
+            rules={{ required: "Place visited is required." }}
             render={({ field }) => (
               <FormItem>
                 <div className="grid gap-3">
@@ -55,7 +40,7 @@ export default function ConfigPanel() {
                   <FormControl>
                     <Input id="place-visited" placeholder="eg. Yellow Stone National Park" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage>{errors.placeVisited?.message}</FormMessage>
                 </div>
               </FormItem>
             )}
@@ -63,6 +48,7 @@ export default function ConfigPanel() {
           <FormField
             control={form.control}
             name="elements"
+            rules={{ validate: validateCommaSeparated }}
             render={({ field }) => (
               <FormItem>
                 <div className="grid gap-3">
@@ -75,7 +61,7 @@ export default function ConfigPanel() {
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage>{errors.elements?.message}</FormMessage>
                 </div>
               </FormItem>
             )}
@@ -83,6 +69,7 @@ export default function ConfigPanel() {
           <FormField
             control={form.control}
             name="colors"
+            rules={{ validate: validateCommaSeparated }}
             render={({ field }) => (
               <FormItem>
                 <div className="grid gap-3">
@@ -90,7 +77,7 @@ export default function ConfigPanel() {
                   <FormControl>
                     <Textarea id="colors" placeholder="eg. Green, Brown" className="min-h-[5rem]" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage>{errors.colors?.message}</FormMessage>
                 </div>
               </FormItem>
             )}
@@ -98,6 +85,7 @@ export default function ConfigPanel() {
           <FormField
             control={form.control}
             name="shape"
+            rules={{ required: "Shape is required." }}
             render={({ field }) => (
               <FormItem>
                 <div className="grid gap-3">
@@ -113,7 +101,7 @@ export default function ConfigPanel() {
                       <SelectItem value="circular">Circular</SelectItem>
                     </SelectContent>
                   </Select>
-                  <FormMessage />
+                  <FormMessage>{errors.shape?.message}</FormMessage>
                 </div>
               </FormItem>
             )}
@@ -121,6 +109,7 @@ export default function ConfigPanel() {
           <FormField
             control={form.control}
             name="style"
+            rules={{ required: "Style is required." }}
             render={({ field }) => (
               <FormItem>
                 <div className="grid gap-3">
@@ -140,7 +129,7 @@ export default function ConfigPanel() {
                       <SelectItem value="graffiti">Graffiti</SelectItem>
                     </SelectContent>
                   </Select>
-                  <FormMessage />
+                  <FormMessage>{errors.style?.message}</FormMessage>
                 </div>
               </FormItem>
             )}

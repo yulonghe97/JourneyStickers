@@ -1,9 +1,7 @@
 import { Bird, Rabbit, Turtle } from "lucide-react";
 
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 
 export default function APIPanel() {
   return (
@@ -22,10 +20,10 @@ export default function APIPanel() {
                   <Rabbit className="size-5" />
                   <div className="grid gap-0.5">
                     <p>
-                      <span className="font-medium text-foreground">GPT4</span>
+                      <span className="font-medium text-foreground">DALL·E 3</span>
                     </p>
                     <p className="text-xs" data-description>
-                      Powered by DALL·E 3
+                      Powered by OpenAI
                     </p>
                   </div>
                 </div>
