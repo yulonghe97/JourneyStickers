@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import APIPanel from "./APIPanel";
 import { Badge } from "./ui/badge";
@@ -7,14 +7,13 @@ import ConfigPanel from "./ConfigPanel";
 import { Button } from "./ui/button";
 import Animated from "./Animated";
 import { Loader } from "lucide-react";
-
 import Lottie from "lottie-react";
 import travelAnimation from "./travel-animation.json";
 import { ImageConfiguration } from "@/interface/interfaces";
 import { useGenerateImage } from "@/hooks/useGenerateImage";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { useLocalStorage } from "@uidotdev/usehooks";
+import { useLocalStorage, useMediaQuery } from "@uidotdev/usehooks";
 
 export default function ControlPanel() {
   const { generate, loading, error, data } = useGenerateImage({
@@ -30,6 +29,12 @@ export default function ControlPanel() {
   };
 
   const [quota, setQuota] = useLocalStorage("quota", process.env.NEXT_PUBLIC_QUOTA_LIMIT || "5");
+
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
+
+  if(isSmallDevice) {
+    return <div className="flex w-full h-full justify-center items-center mt-10">Only Desktop is supported</div>
+  }
 
   return (
     <Animated>
