@@ -11,7 +11,7 @@ export default function Header() {
         <Highlight className="text-black dark:text-white ml-2">Stickers</Highlight>
       </Animated>
       <Animated className="text-lg text-muted-foreground font-semibold mt-6">
-        AI-Driven Sticker Personalization Design Project
+        Don&lsquo;t just bring back souvenirs—bring home stories
       </Animated>
     </div>
   );
